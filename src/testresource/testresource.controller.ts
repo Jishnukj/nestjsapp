@@ -17,6 +17,11 @@ export class TestresourceController {
     return this.testresourceService.findAll();
   }
 
+  @Get('name')
+  findByname(@Body('name') name: string){
+    return this.testresourceService.findByName(name);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.testresourceService.findOne(+id);
