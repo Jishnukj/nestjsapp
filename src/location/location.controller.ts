@@ -1,9 +1,8 @@
 import { Body, Get } from '@nestjs/common';
 import { Post } from '@nestjs/common';
 import { Controller } from '@nestjs/common';
-import { LocationDto } from './dto/location.dto';
+import { LocationCreateDto } from './dto/locationcreate.dto';
 import { LocationService } from './location.service';
-import { LocationOn} from './entities/location.entity'
 
 @Controller('location')
 export class LocationController {
@@ -15,7 +14,7 @@ export class LocationController {
     }
 
     @Post()
-    create(@Body() loc: LocationDto){
+    create(@Body() loc: LocationCreateDto){
         return this.loactionservice.create(loc);
     }
 }
