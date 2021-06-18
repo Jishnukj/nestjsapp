@@ -3,17 +3,11 @@ import { ManyToOne, OneToMany } from "typeorm";
 import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 
-@Entity('Users')
-export class Users {
+@Entity('Subloc')
+export class Subloc {
     @PrimaryGeneratedColumn()
     id?: number;
 
     @Column({ type: 'varchar', length: 100, nullable: false })
     name: string;
-
-    @Column({ type: 'varchar', length: 100, nullable: false })
-    password: string;
-
-    @ManyToOne(type => Locations,{nullable:false}) @JoinColumn()
-    location: Locations;
 }

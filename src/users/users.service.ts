@@ -12,16 +12,34 @@ export class UsersService {
     private userrepo: Repository<Users>
   ) { }
 
-  create(createUserDto: CreateUserDto) {
-    return "hai";
+  async create(createUserDto: any) {
+    return await this.userrepo.save(createUserDto);
   }
 
   async findAll() {
-    return await this.userrepo.find({relations:["location"]});;
+    //return await this.userrepo.find();
+    return await this.userrepo.find({
+      order: {
+        'name': 'ASC',
+        'password': 'DESC'
+      }
+    });
+    //return await this.userrepo.find({relations:["location"]});;
+    // return await this.userrepo.find({select:['name','password']});
+    // return await this.userrepo.find({
+    //   select:['name','password'],
+    //   relations:['location']
+    // });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async findOne(id: number) {
+    let user = await this.userrepo.findOne({
+      relations: ['location'],
+      where: [
+        { id: id },
+      ]
+    });
+    return user.location.location;
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {

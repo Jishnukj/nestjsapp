@@ -6,8 +6,9 @@ import { DatabaseModule } from './database/database.module';
 import { TestresourceModule } from './testresource/testresource.module';
 import { LocationModule } from './location/location.module';
 import { UsersModule } from './users/users.module';
+import { SublocModule } from './subloc/subloc.module';
 @Module({
-  imports: [ DatabaseModule, TestresourceModule, LocationModule, UsersModule],
+  imports: [ DatabaseModule, TestresourceModule, LocationModule, UsersModule, SublocModule],
   controllers: [AppController],
   providers: [AppService],
 })
