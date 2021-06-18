@@ -12,7 +12,9 @@ export class LocationService {
     ) { }
 
     async findAll() {
-        return await this.locationrepo.find({order:{id:'ASC'}});
+        return await this.locationrepo.find({
+            relations:['sublocs']
+        });
     }
 
     async create(loc: LocationCreateDto) {

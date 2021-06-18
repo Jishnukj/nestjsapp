@@ -1,3 +1,5 @@
+import { Subloc } from "src/subloc/entities/subloc.entity";
+import { OneToMany } from "typeorm";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 
@@ -11,4 +13,7 @@ export class Locations{
 
     @Column({type: 'int', nullable:false})
     pincode:number;
+
+    @OneToMany(() => Subloc, subloc=>subloc.locations)
+    sublocs: Subloc[];
 }

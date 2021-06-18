@@ -10,4 +10,7 @@ export class Subloc {
 
     @Column({ type: 'varchar', length: 100, nullable: false })
     name: string;
+
+    @ManyToOne(() => Locations, locations=>locations.sublocs)
+    locations:Locations
 }

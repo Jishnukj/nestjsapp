@@ -16,7 +16,9 @@ export class SublocService {
   }
 
   findAll() {
-    return this.sublocationrepo.find();
+    return this.sublocationrepo.find({
+      relations: ['locations']
+    });
   }
 
   findOne(id: number) {
