@@ -4,8 +4,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { config } from './orm.config';
 import { CompaniesModule } from './companies/companies.module';
+import { TestresourceModule } from './testresource/testresource.module';
 @Module({
-  imports: [TypeOrmModule.forRoot(config), CompaniesModule],
+  imports: [TypeOrmModule.forRoot(config), CompaniesModule, TestresourceModule],
   controllers: [AppController],
   providers: [AppService],
 })
