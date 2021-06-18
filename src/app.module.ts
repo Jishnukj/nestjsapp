@@ -4,8 +4,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DatabaseModule } from './database/database.module';
 import { TestresourceModule } from './testresource/testresource.module';
+import { LocationModule } from './location/location.module';
 @Module({
-  imports: [ DatabaseModule, TestresourceModule],
+  imports: [ DatabaseModule, TestresourceModule, LocationModule],
   controllers: [AppController],
   providers: [AppService],
 })
