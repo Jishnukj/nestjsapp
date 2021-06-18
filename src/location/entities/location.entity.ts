@@ -13,7 +13,8 @@ export class Locations{
 
     @Column({type: 'int', nullable:false})
     pincode:number;
-
+    
+    // this will not create column
     @OneToMany(() => Subloc, subloc=>subloc.locations)
     sublocs: Subloc[];
 }
