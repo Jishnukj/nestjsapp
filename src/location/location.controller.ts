@@ -4,7 +4,7 @@ import { Controller } from '@nestjs/common';
 import { LocationCreateDto } from './dto/locationcreate.dto';
 import { LocationService } from './location.service';
 
-@Controller('location')
+@Controller('locations')
 export class LocationController {
     constructor(private readonly loactionservice: LocationService){}
 
