@@ -2,7 +2,9 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { TestresourceService } from './testresource.service';
 import { CreateTestresourceDto } from './dto/create-testresource.dto';
 import { UpdateTestresourceDto } from './dto/update-testresource.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('testresource')
 @Controller('testresource')
 export class TestresourceController {
   constructor(private readonly testresourceService: TestresourceService) {}

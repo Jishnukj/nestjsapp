@@ -2,7 +2,9 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { SublocService } from './subloc.service';
 import { CreateSublocDto } from './dto/create-subloc.dto';
 import { UpdateSublocDto } from './dto/update-subloc.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Sublocation')
 @Controller('subloc')
 export class SublocController {
   constructor(private readonly sublocService: SublocService) {}
@@ -32,3 +34,4 @@ export class SublocController {
     return this.sublocService.remove(+id);
   }
 }
+9

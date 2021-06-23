@@ -1,10 +1,12 @@
 import { Body, Delete, Get, Param, Patch } from '@nestjs/common';
 import { Post } from '@nestjs/common';
 import { Controller } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { LocationDto } from './dto/location.dto';
 import { LocationCreateDto } from './dto/locationcreate.dto';
 import { LocationService } from './location.service';
 
+@ApiTags('location')
 @Controller('locations')
 export class LocationController {
     constructor(private readonly loactionservice: LocationService){}
