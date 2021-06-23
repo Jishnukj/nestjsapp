@@ -1,4 +1,6 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { exception } from 'console';
+import { throwError } from 'rxjs';
 import { Repository } from 'typeorm';
 import { LocationDto } from './dto/location.dto';
 import { LocationCreateDto } from './dto/locationcreate.dto';
@@ -21,8 +23,13 @@ export class LocationService {
         return await this.locationrepo.save(loc);
     }
 
-    async findByid(id: number){
-        return await this.locationrepo.findOne(id);
+    async findByid(id: number):Promise<Locations>{
+        let data= await this.locationrepo.findOne(id);
+        if (!data) {
+            throw new NotFoundException();
+        }
+        return data;
+
     }
 
     async findByname(loc: string){
