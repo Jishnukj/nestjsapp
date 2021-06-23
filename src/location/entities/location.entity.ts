@@ -17,4 +17,5 @@ export class Locations{
     // this will not create column
     @OneToMany(() => Subloc, subloc=>subloc.locations)
     sublocs: Subloc[];
+    
 }
