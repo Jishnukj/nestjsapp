@@ -14,6 +14,8 @@ export class Users {
     @Column({ type: 'varchar', length: 100, nullable: false })
     password: string;
 
-    @ManyToOne(type => Locations,{nullable:false}) @JoinColumn()
+    @Column({ type: 'int'})
+    locationid:number;
+    @ManyToOne(type => Locations,{nullable:false}) @JoinColumn({name:'locationid'})
     location: Locations;
 }
