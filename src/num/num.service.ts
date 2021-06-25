@@ -13,7 +13,7 @@ export class NumService {
     private numRepo: Repository<Num>,
   ) {}
   create(createNumDto: CreateNumDto) {
-    return 'This action adds a new num';
+    return this.numRepo.save(createNumDto);
   }
 
   async findAll() {
