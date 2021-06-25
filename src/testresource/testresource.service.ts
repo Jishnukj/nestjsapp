@@ -1,4 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateTestresourceDto } from './dto/create-testresource.dto';
 import { CustomDto } from './dto/custom.dto';
@@ -7,10 +8,10 @@ import { Testresource } from './entities/testresource.entity';
 
 @Injectable()
 export class TestresourceService {
- constructor(
-   @Inject('TEST_REPO')
-   private testrepo: Repository<Testresource>
- ){}
+  constructor(
+    @InjectRepository(Testresource)
+    private testrepo: Repository<Testresource>,
+  ) {}
 
   async create(createTestresourceDto: CreateTestresourceDto) {
     return await this.testrepo.save(createTestresourceDto);

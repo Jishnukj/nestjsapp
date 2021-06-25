@@ -1,4 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import { Locations } from 'src/location/entities/location.entity';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -8,9 +9,9 @@ import { Users } from './entities/user.entity';
 @Injectable()
 export class UsersService {
   constructor(
-    @Inject('USER_REPO')
-    private userrepo: Repository<Users>
-  ) { }
+    @InjectRepository(Users)
+    private userrepo: Repository<Users>,
+  ) {}
 
   async create(createUserDto: any) {
     return await this.userrepo.save(createUserDto);
