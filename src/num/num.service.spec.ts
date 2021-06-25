@@ -6,11 +6,6 @@ import { NumService } from './num.service';
 describe('NumService', () => {
   let service: NumService;
 
-
-
-
-
-
   const mockNumRepo = {
     create: jest.fn().mockImplementation(dto => dto),
     save: jest.fn().mockImplementation(dto => Promise.resolve({ id: Date.now(), ...dto })),
