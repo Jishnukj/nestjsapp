@@ -1,3 +1,4 @@
+import { BadRequestException } from '@nestjs/common';
 import { Inject } from '@nestjs/common';
 import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
@@ -12,7 +13,11 @@ export class SublocService {
     private sublocationrepo: Repository<Subloc>
   ) { }
   create(createSublocDto: CreateSublocDto) {
-    return 'This action adds a new subloc';
+    const {name} = createSublocDto;
+    if(!name){
+      throw new BadRequestException('name is required');
+    }
+    return this.sublocationrepo.save(createSublocDto);
   }
 
   findAll() {
