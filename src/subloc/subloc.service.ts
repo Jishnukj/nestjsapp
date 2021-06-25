@@ -12,12 +12,12 @@ export class SublocService {
     @Inject('SUBLOCATION_REPO')
     private sublocationrepo: Repository<Subloc>
   ) { }
-  create(createSublocDto: CreateSublocDto) {
-    const {name} = createSublocDto;
-    if(!name){
+  async create(createSublocDto: CreateSublocDto) {
+    const { name } = createSublocDto;
+    if (!name) {
       throw new BadRequestException('name is required');
     }
-    return this.sublocationrepo.save(createSublocDto);
+    return await this.sublocationrepo.save(createSublocDto);
   }
 
   findAll() {
@@ -30,8 +30,11 @@ export class SublocService {
     return `This action returns a #${id} subloc`;
   }
 
-  update(id: number, updateSublocDto: UpdateSublocDto) {
-    return `This action updates a #${id} subloc`;
+  async update(loc: UpdateSublocDto) {
+    let subloc = await this.sublocationrepo.findOne(loc.id);
+    subloc.name = loc.name;
+    subloc.locationId = loc.locationId;
+    return await this.sublocationrepo.save(loc);
   }
 
   remove(id: number) {

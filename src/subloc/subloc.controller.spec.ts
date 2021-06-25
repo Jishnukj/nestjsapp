@@ -26,7 +26,7 @@ describe('SublocController', () => {
   });
   
   it('create a subloc', () => {
-    const dto = { name: 'jishnu', locationsId: 1 };
+    const dto = { name: 'jishnu', locationId: 1 };
     expect(controller.create(dto)).toEqual(
       {
         id: expect.any(Number),

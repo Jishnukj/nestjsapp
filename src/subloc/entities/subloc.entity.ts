@@ -11,7 +11,10 @@ export class Subloc {
     @Column({ type: 'varchar', length: 100, nullable: false })
     name: string;
     
+    @Column()
+    locationId:number
     //this will create column
     @ManyToOne(() => Locations, locations=>locations.sublocs)
+    @JoinColumn({name: 'locationId'})
     locations:Locations
 }

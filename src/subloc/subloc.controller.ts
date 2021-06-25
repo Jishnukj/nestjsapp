@@ -24,9 +24,9 @@ export class SublocController {
     return this.sublocService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateSublocDto: UpdateSublocDto) {
-    return this.sublocService.update(+id, updateSublocDto);
+  @Patch()
+  update(@Body() updateSublocDto: UpdateSublocDto) {
+    return this.sublocService.update(updateSublocDto);
   }
 
   @Delete(':id')

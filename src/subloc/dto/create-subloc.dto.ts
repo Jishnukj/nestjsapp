@@ -5,5 +5,5 @@ export class CreateSublocDto {
     name: string;
 
     @ApiProperty()
-    locationsId:number;
+    locationId:number;
 }
