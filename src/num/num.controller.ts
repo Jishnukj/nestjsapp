@@ -2,7 +2,9 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { NumService } from './num.service';
 import { CreateNumDto } from './dto/create-num.dto';
 import { UpdateNumDto } from './dto/update-num.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('num')
 @Controller('num')
 export class NumController {
   constructor(private readonly numService: NumService) {}

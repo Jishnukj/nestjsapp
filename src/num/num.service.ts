@@ -8,16 +8,16 @@ import { Num } from './entities/num.entity';
 @Injectable()
 export class NumService {
 
-  // constructor(
-  //   @InjectRepository(Num)
-  //   private numRepo: Repository<Num>,
-  // ) {}
+  constructor(
+    @InjectRepository(Num)
+    private numRepo: Repository<Num>,
+  ) {}
   create(createNumDto: CreateNumDto) {
     return 'This action adds a new num';
   }
 
-  findAll() {
-    return `This action returns all num`;
+  async findAll() {
+    return await this.numRepo.find();
   }
 
   findOne(id: number) {
