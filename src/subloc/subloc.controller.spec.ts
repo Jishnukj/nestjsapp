@@ -1,5 +1,4 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { Data } from 'src/datas/entities/data.entity';
 import { SublocController } from './subloc.controller';
 import { SublocService } from './subloc.service';
 
@@ -9,7 +8,11 @@ describe('SublocController', () => {
   const mockSublocService = {
     create: jest.fn(dto => {
       return { id: 2, ...dto }
-    })
+    }),
+
+    update: jest.fn().mockImplementation((dto => {
+      return dto;
+    }))
   }
 
   beforeEach(async () => {
@@ -31,13 +34,25 @@ describe('SublocController', () => {
       {
         id: expect.any(Number),
         name: 'jishnu',
-        locationsId: 1
+        locationId: 1
       }
     );
 
     expect(mockSublocService.create).toHaveBeenCalledWith(dto); 
   });
 
+  it('update a user',()=>{
+    const updatedto ={
+      id: 1,
+      name: 'jishnu',
+      locationId: 1
+    }
+
+    expect(controller.update(updatedto)).toEqual(updatedto);
+
+    expect(mockSublocService.update).toHaveBeenCalledWith(updatedto); 
+
+  });
 
 
 });
