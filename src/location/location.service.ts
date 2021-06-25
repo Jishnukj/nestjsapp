@@ -1,4 +1,5 @@
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import { exception } from 'console';
 import { throwError } from 'rxjs';
 import { Repository } from 'typeorm';
@@ -9,9 +10,9 @@ import { Locations } from './entities/location.entity';
 @Injectable()
 export class LocationService {
     constructor(
-        @Inject('LOCATION_REPO')
-        private locationrepo: Repository<Locations>
-    ) { }
+        @InjectRepository(Locations)
+        private locationrepo: Repository<Locations>,
+      ) {}
 
     async findAll() {
         return await this.locationrepo.find({
